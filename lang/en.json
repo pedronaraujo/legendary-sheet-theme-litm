@@ -1,0 +1,38 @@
+{
+  "LEGENDARY": {
+    "rollDice": "Roll Dice",
+    "type": {
+      "Origin": "Origin theme",
+      "Adventure": "Adventure theme",
+      "Greatness": "Greatness theme",
+      "Variable": "Variable theme",
+      "ItemTags": "Item tags",
+      "Fellowship": "Fellowship theme"
+    },
+    "legend": {
+      "power": "Power tags",
+      "weakness": "Weakness tag"
+    },
+    "settings": {
+      "characters": {
+        "name": "Legendary hero sheets",
+        "hint": "Show hero sheets as parchment theme cards."
+      },
+      "challenges": {
+        "name": "Legendary challenge sheets",
+        "hint": "Show challenge sheets as a narrow card with the portrait on top."
+      },
+      "tilt": {
+        "name": "Slightly tilted cards",
+        "hint": "Tilt the cards a little, as if laid on the table."
+      },
+      "backdrop": {
+        "name": "Hero sheet background",
+        "hint": "Behind the cards: the hero's art (custom background), parchment, or nothing (see the scene through).",
+        "art": "Hero art",
+        "parchment": "Parchment",
+        "none": "Transparent"
+      }
+    }
+  }
+}

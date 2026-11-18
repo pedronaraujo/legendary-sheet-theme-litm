@@ -1,0 +1,708 @@
+/* Legendary Sheet Theme — hero and challenge sheets of the official Legend in the
+   Mist system (mist-engine-fvtt) restyled as parchment theme cards.
+   Art: referenced from the installed system (/systems/mist-engine-fvtt/assets).
+   Fonts: IM Fell English (OFL) and Fraunces (OFL), bundled in ../fonts. */
+
+@font-face { font-family: "Legendary Fell"; src: url("../fonts/im-fell-english-latin-400-normal.woff2") format("woff2"); font-style: normal; font-display: swap; }
+@font-face { font-family: "Legendary Fell"; src: url("../fonts/im-fell-english-latin-400-italic.woff2") format("woff2"); font-style: italic; font-display: swap; }
+@font-face { font-family: "Legendary Fell SC"; src: url("../fonts/im-fell-english-sc-latin-400-normal.woff2") format("woff2"); font-display: swap; }
+@font-face { font-family: "Legendary Fraunces"; src: url("../fonts/fraunces-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Legendary Fraunces"; src: url("../fonts/fraunces-latin-wght-italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+
+.application.legendary-theme {
+  --lg-ink: #3a2c1c;
+  --lg-ink-soft: rgba(58, 44, 28, 0.55);
+  --lg-light: #f6ecd6;
+  --lg-slate: #474c57;
+  --lg-slate-dark: #353942;
+  --lg-weak: #6e2b1f;
+  --lg-weak-bg: rgba(140, 60, 45, 0.16);
+  --lg-gold: #c99a3a;
+  --lg-origin: #55704f;
+  --lg-adventure: #8f4b35;
+  --lg-greatness: #5e5f92;
+  --lg-variable: #2e2b29;
+  --lg-tag: hsl(45 92% 52% / 0.8);
+  --lg-status: hsl(76 46% 45% / 0.8);
+  --lg-limit: #9b3424;
+  --lg-title: "Legendary Fell", "IM Fell English", "Palatino Linotype", Palatino, serif;
+  --lg-sc: "Legendary Fell SC", "Legendary Fell", Palatino, serif;
+  --lg-text: "Legendary Fraunces", Fraunces, "Book Antiqua", Palatino, serif;
+  --lg-paper: url("/systems/mist-engine-fvtt/assets/theme-bg-top.webp");
+  --lg-paper-2: url("/systems/mist-engine-fvtt/assets/paper_background_1.webp");
+  --lg-paper-3: url("/systems/mist-engine-fvtt/assets/bg-pargement-texture.webp");
+  --lg-dark-paper: url("/systems/mist-engine-fvtt/assets/bg-dark-old-paper-textures.webp");
+}
+
+/* ══ Hero sheet ═════════════════════════════════════════════════════════════ */
+
+.application.legendary-character {
+  box-shadow: none;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.55));
+}
+.application.legendary-character .window-header {
+  background: rgba(24, 17, 12, 0.72);
+  border-bottom: none;
+  font-family: var(--lg-sc);
+}
+.application.legendary-character[data-legendary-backdrop="parchment"] .window-content {
+  background: var(--lg-paper-3) center / cover no-repeat !important;
+}
+.application.legendary-character[data-legendary-backdrop="none"],
+.application.legendary-character[data-legendary-backdrop="none"] .window-content {
+  background: transparent !important;
+  background-image: none !important;
+}
+.application.legendary-character[data-legendary-backdrop="none"] .window-content { backdrop-filter: blur(1px); }
+
+/* Header: big name, "Roll Dice" scroll, tags & statuses */
+.legendary-character:not(.legendary-edit) .sheet-header.stylized-background {
+  background: transparent !important;
+  border: none;
+}
+.legendary-character:not(.legendary-edit) .sheet-header .charname {
+  font-family: var(--lg-title);
+  font-size: 2.9rem;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  color: var(--lg-light) !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85), 0 0 1px #000;
+  border: none;
+}
+.legendary-character:not(.legendary-edit) .sheet-header .short-description {
+  font-family: var(--lg-sc);
+  font-size: 0.95rem;
+  color: var(--lg-light);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+  letter-spacing: 0.5px;
+}
+.legendary-character:not(.legendary-edit) .sheet-header .col-main {
+  position: relative;
+  padding: 0.4rem 0.8rem 0.6rem;
+  background: var(--lg-paper) center / cover no-repeat;
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  color: var(--lg-ink);
+}
+.legendary-character.legendary-tilt:not(.legendary-edit) .sheet-header .col-main { transform: rotate(-1.6deg); }
+.legendary-character .legendary-roll-title {
+  font-family: var(--lg-title);
+  font-style: italic;
+  font-size: 1.6rem;
+  text-align: center;
+  line-height: 1.1;
+  margin-bottom: 0.2rem;
+  border-bottom: 1px solid var(--lg-ink-soft);
+}
+.legendary-character:not(.legendary-edit) .sheet-header .roll-button {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--lg-ink);
+  font-family: var(--lg-title);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  text-align: left;
+  padding: 0 0.2rem;
+}
+.legendary-character:not(.legendary-edit) .sheet-header .roll-button i { color: var(--lg-adventure); width: 1.3em; }
+.legendary-character:not(.legendary-edit) .sheet-header .roll-button:hover {
+  background: rgba(201, 154, 58, 0.25);
+  text-shadow: 0 0 6px rgba(201, 154, 58, 0.6);
+}
+.legendary-character:not(.legendary-edit) .sheet-header .col-status .container-card-with-border {
+  background: var(--lg-paper-2) center / cover no-repeat;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
+}
+
+/* Tabs */
+.legendary-character .litm-character-sheet-tabs,
+.legendary-challenge .sheet-tabs {
+  border: none;
+  background: transparent;
+}
+.legendary-character .litm-character-sheet-tabs a,
+.legendary-challenge .sheet-tabs a {
+  font-family: var(--lg-sc);
+  font-size: 1.05rem;
+  color: var(--lg-light);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+  border: none;
+}
+.legendary-character .litm-character-sheet-tabs a.active,
+.legendary-challenge .sheet-tabs a.active {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 220, 140, 0.9), 0 1px 3px #000;
+  box-shadow: inset 0 -2px 0 var(--lg-gold);
+}
+.legendary-challenge .sheet-tabs a { color: var(--lg-ink); text-shadow: none; }
+.legendary-challenge .sheet-tabs a.active { color: var(--lg-ink); text-shadow: none; }
+
+/* ── Cards ─────────────────────────────────────────────────────────────── */
+
+.legendary-character:not(.legendary-edit) .card-grid { gap: 1.1rem 0.9rem; padding: 0.6rem 0.4rem 1rem; }
+.legendary-character:not(.legendary-edit) .themebook-container {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+  transition: transform 0.15s ease, filter 0.15s ease;
+  filter: drop-shadow(0 5px 9px rgba(0, 0, 0, 0.5));
+}
+.legendary-character.legendary-tilt:not(.legendary-edit) .themebook-container:nth-child(4n + 1) { transform: rotate(-1.2deg); }
+.legendary-character.legendary-tilt:not(.legendary-edit) .themebook-container:nth-child(4n + 2) { transform: rotate(0.8deg) translateY(4px); }
+.legendary-character.legendary-tilt:not(.legendary-edit) .themebook-container:nth-child(4n + 3) { transform: rotate(-0.5deg) translateY(-2px); }
+.legendary-character.legendary-tilt:not(.legendary-edit) .themebook-container:nth-child(4n + 4) { transform: rotate(1.3deg) translateY(3px); }
+.legendary-character:not(.legendary-edit) .themebook-container:hover {
+  transform: rotate(0deg) scale(1.015);
+  z-index: 2;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
+}
+
+.legendary-character:not(.legendary-edit) .themebook-style {
+  --lg-band: var(--lg-variable);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 3px;
+  background: var(--lg-paper) center top / 100% auto repeat-y !important;
+  color: var(--lg-ink);
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35), inset 0 0 18px rgba(120, 80, 30, 0.25);
+}
+.legendary-character .themebook-style.litm-origin { --lg-band: var(--lg-origin); }
+.legendary-character .themebook-style.litm-adventure { --lg-band: var(--lg-adventure); }
+.legendary-character .themebook-style.litm-greatness { --lg-band: var(--lg-greatness); }
+.legendary-character .themebook-style.litm-variable { --lg-band: var(--lg-variable); }
+.legendary-character .themebook-style.litm-backpack,
+.legendary-character .themebook-style.litm-fellowship-themecard { --lg-band: #6d5a44; }
+
+/* order: band, legend + title + tags, development, quest */
+.legendary-character:not(.legendary-edit) .themebook-style > .themebook-item,
+.legendary-character:not(.legendary-edit) .themebook-style > h2.theme-name { order: 0; }
+.legendary-character:not(.legendary-edit) .themebook-style > .powertags-container { order: 1; flex: 1 1 auto; }
+.legendary-character:not(.legendary-edit) .themebook-style > .development-container { order: 2; }
+.legendary-character:not(.legendary-edit) .themebook-style > .quest-container { order: 3; }
+
+/* top band: theme name (left) and theme type (right) */
+.legendary-character:not(.legendary-edit) .themebook-style h2.theme-name {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0.35rem 0.6rem 0.3rem;
+  min-height: 1.6rem;
+  background: var(--lg-band);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(0, 0, 0, 0.18));
+  color: var(--lg-light);
+  font-family: var(--lg-sc);
+  font-size: 0.82rem;
+  font-weight: normal;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  text-align: left;
+  border: none;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+.legendary-character:not(.legendary-edit) .themebook-style h2.theme-name::after {
+  content: attr(data-legendary-type);
+  margin-left: auto;
+  font-size: 0.68rem;
+  opacity: 0.8;
+}
+.legendary-character:not(.legendary-edit) .themebook-style h2.theme-name .themebook-icon { display: none; }
+.legendary-character:not(.legendary-edit) .themebook-style h2.theme-name .card-drag-handle { opacity: 0; transition: opacity 0.15s; }
+.legendary-character:not(.legendary-edit) .themebook-container:hover h2.theme-name .card-drag-handle { opacity: 0.7; }
+.legendary-character:not(.legendary-edit) .themebook-style h2.theme-name a { color: var(--lg-light); }
+
+.legendary-character .legendary-legend {
+  display: flex;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0 0.1rem;
+  font-family: var(--lg-sc);
+  font-size: 0.66rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--lg-ink-soft);
+}
+.legendary-character .legendary-legend .weak { color: var(--lg-weak); }
+
+/* tag rows */
+.legendary-character:not(.legendary-edit) .powertags-container { padding: 0 0.55rem 0.4rem; }
+.legendary-character:not(.legendary-edit) .item-powertag-line,
+.legendary-character:not(.legendary-edit) .item-weakness-line,
+.legendary-character:not(.legendary-edit) .item-storytag-line {
+  display: grid;
+  grid-template-columns: 1.4rem 1fr 1.4rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  min-height: 1.85rem;
+  border-top: 1px solid rgba(70, 50, 25, 0.22);
+}
+.legendary-character:not(.legendary-edit) .item-powertag-line:nth-child(even) {
+  background-image: linear-gradient(to right, transparent, rgba(69, 59, 29, 0.1), transparent);
+}
+.legendary-character:not(.legendary-edit) .powertag-name,
+.legendary-character:not(.legendary-edit) .storytag-name,
+.legendary-character:not(.legendary-edit) .litm-pc-powertag,
+.legendary-character:not(.legendary-edit) .litm-pc-weakness,
+.legendary-character:not(.legendary-edit) .litm-pc-storytag {
+  grid-column: 2;
+  display: block;
+  padding: 0.28rem 0.2rem;
+  font-family: var(--lg-text);
+  font-size: 0.93rem;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.15;
+  text-align: center;
+  color: var(--lg-ink);
+  background: none;
+  border: none;
+  border-radius: 999px;
+  text-transform: none;
+  transition: background 0.12s, box-shadow 0.12s;
+}
+.legendary-character:not(.legendary-edit) .litm-pc-powertag.empty {
+  color: rgba(58, 44, 28, 0.35);
+  font-weight: 400;
+}
+/* the title tag */
+.legendary-character:not(.legendary-edit) .item-powertag-line:has(.powertag-name.first) {
+  border-top: none;
+  min-height: 2.6rem;
+  background: none;
+}
+.legendary-character:not(.legendary-edit) .powertag-name.first {
+  font-family: var(--lg-title);
+  font-size: 1.55rem;
+  font-weight: normal;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 0.25rem 0.1rem 0.4rem;
+}
+/* selected / to burn / burned */
+.legendary-character:not(.legendary-edit) .powertag-name.selected,
+.legendary-character:not(.legendary-edit) .storytag-name.selected,
+.legendary-character:not(.legendary-edit) .litm-pc-weakness.selected,
+.legendary-character:not(.legendary-edit) .litm-pc-storytag.selected {
+  background: radial-gradient(ellipse at center, rgba(233, 182, 64, 0.65), rgba(233, 182, 64, 0.15) 70%, transparent 75%);
+  box-shadow: none;
+  color: #2a1d0e;
+}
+.legendary-character:not(.legendary-edit) .litm-pc-weakness.selected {
+  background: radial-gradient(ellipse at center, rgba(170, 70, 50, 0.45), rgba(170, 70, 50, 0.1) 70%, transparent 75%);
+}
+.legendary-character:not(.legendary-edit) .powertag-name.burned,
+.legendary-character:not(.legendary-edit) .storytag-name.burned,
+.legendary-character:not(.legendary-edit) .litm-pc-storytag.burned {
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+  color: rgba(58, 44, 28, 0.5);
+}
+.legendary-character:not(.legendary-edit) .burn-indicator {
+  grid-column: 1;
+  display: flex;
+  justify-content: center;
+  opacity: 0.8;
+}
+.legendary-character:not(.legendary-edit) .burn-indicator .burn-icon { width: 15px; height: 15px; background-size: contain; filter: sepia(0.6) brightness(0.55); }
+.legendary-character:not(.legendary-edit) .burn-indicator:hover { opacity: 1; }
+/* weakness */
+.legendary-character:not(.legendary-edit) .item-weakness-line {
+  background-image: radial-gradient(ellipse at top, var(--lg-weak-bg) 30%, transparent 70%);
+}
+.legendary-character:not(.legendary-edit) .weakness-indicator { grid-column: 1; text-align: center; color: var(--lg-weak); font-size: 0.8rem; }
+.legendary-character:not(.legendary-edit) .litm-pc-weakness { color: var(--lg-weak); font-style: italic; }
+/* special improvements */
+.legendary-character:not(.legendary-edit) .special-improvement-section-label {
+  margin: 0.4rem 0 0.1rem;
+  font-family: var(--lg-sc);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--lg-ink-soft);
+  border: none;
+}
+.legendary-character:not(.legendary-edit) .item-special-improvement-line {
+  font-family: var(--lg-text);
+  font-size: 0.82rem;
+  color: var(--lg-ink);
+  justify-content: center;
+  text-align: center;
+}
+
+/* development: Abandon / Improve / Milestone */
+.legendary-character:not(.legendary-edit) .development-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0.35rem 0.6rem 0.4rem;
+  border-top: 1px solid rgba(70, 50, 25, 0.25);
+  font-family: var(--lg-sc);
+  font-size: 0.66rem;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: var(--lg-ink);
+}
+.legendary-character:not(.legendary-edit) .development-partial-container {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+}
+.legendary-character:not(.legendary-edit) .development-partial-container .marker {
+  font-size: 0;
+  width: 8px;
+  height: 8px;
+  border: 1.4px solid var(--lg-ink);
+  background: transparent;
+  transform: rotate(45deg);
+  margin-right: 2px;
+}
+.legendary-character:not(.legendary-edit) .development-partial-container .marker.checked {
+  background: var(--lg-ink);
+}
+
+/* quest: dark slate with an epigraph */
+.legendary-character:not(.legendary-edit) .quest-container {
+  position: relative;
+  margin: 0;
+  padding: 0.75rem 0.8rem 0.9rem;
+  background: var(--lg-slate);
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 30%), var(--lg-dark-paper);
+  background-size: auto, cover;
+  background-blend-mode: normal, soft-light;
+  color: var(--lg-light);
+  border: none;
+  min-height: 4.2rem;
+}
+.legendary-character:not(.legendary-edit) .quest-container:empty { display: none; }
+.legendary-character:not(.legendary-edit) .quest-container h3 { display: none; }
+.legendary-character:not(.legendary-edit) .quest-container .quest-text {
+  margin: 0;
+  font-family: var(--lg-title);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  text-align: center;
+  color: var(--lg-light);
+}
+
+/* backpack card */
+.legendary-character:not(.legendary-edit) .themebook-style.litm-backpack {
+  background: var(--lg-paper-2) center / cover no-repeat !important;
+}
+.legendary-character:not(.legendary-edit) .themebook-style.litm-backpack h2.theme-name,
+.legendary-character:not(.legendary-edit) .themebook-style.litm-fellowship-themecard h2.theme-name {
+  background: none;
+  box-shadow: none;
+  color: var(--lg-ink);
+  font-family: var(--lg-title);
+  font-style: italic;
+  font-size: 1.7rem;
+  text-transform: none;
+  letter-spacing: 0;
+  padding-top: 1.2rem;
+  justify-content: center;
+}
+.legendary-character:not(.legendary-edit) .themebook-style.litm-backpack h2.theme-name::after,
+.legendary-character:not(.legendary-edit) .themebook-style.litm-fellowship-themecard h2.theme-name::after {
+  position: absolute;
+  top: 0.35rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--lg-sc);
+  font-style: normal;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  color: var(--lg-ink-soft);
+}
+.legendary-character:not(.legendary-edit) .themebook-style.litm-backpack h2.theme-name a { color: var(--lg-ink); font-size: 0.9rem; }
+
+/* other cards (quintessences, fellowship relationships, rotes) */
+.legendary-character:not(.legendary-edit) .themebook-container .themebook-style:not([class*="litm-"]) {
+  background: var(--lg-paper-2) center / cover no-repeat !important;
+}
+
+/* ══ Floating tags & statuses (both sheets) ═════════════════════════════════ */
+
+.legendary-theme:not(.legendary-edit) .floating-tag-and-status-entry .fts-input-name {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.12rem 0.55rem;
+  border: none;
+  border-radius: 2px 10px 2px 10px;
+  background: var(--lg-tag);
+  color: #2b1f0f;
+  font-family: var(--lg-text);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 0.88rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.legendary-theme:not(.legendary-edit) .floating-tag-and-status-entry .fts-input-name.status,
+.legendary-theme:not(.legendary-edit) .floating-tag-and-status-entry .fts-input-name[class*="status"] {
+  background: var(--lg-status);
+}
+.legendary-theme:not(.legendary-edit) .floating-tag-and-status-entry .fts-input-name.negative {
+  box-shadow: inset 3px 0 0 var(--lg-weak), 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.legendary-theme:not(.legendary-edit) .floating-tag-and-status-entry .fts-input-name i { font-size: 0.7rem; opacity: 0.65; }
+.legendary-theme:not(.legendary-edit) .floating-tag-and-status-entry .fts-input-name i:hover { opacity: 1; }
+.legendary-theme:not(.legendary-edit) .npc-subtitle-container-c .npc-subtitle-text,
+.legendary-theme:not(.legendary-edit) .floating-status-container-character .npc-subtitle-text {
+  font-family: var(--lg-sc);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--lg-ink);
+}
+
+/* ══ Challenge sheet ═════════════════════════════════════════════════════════ */
+
+.application.legendary-challenge:not(.legendary-edit) {
+  background: var(--lg-paper) center top / 100% auto repeat-y;
+  border-radius: 4px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+  color: var(--lg-ink);
+}
+.application.legendary-challenge:not(.legendary-edit) .window-header {
+  background: rgba(30, 24, 20, 0.9);
+  border: none;
+  font-family: var(--lg-sc);
+}
+.application.legendary-challenge:not(.legendary-edit) .window-content {
+  background: transparent !important;
+  padding: 0;
+}
+
+/* portrait on top, then name, roles, description */
+.legendary-challenge:not(.legendary-edit) .sheet-header {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+.legendary-challenge:not(.legendary-edit) .sheet-header .portrait-img {
+  width: 100%;
+  height: 210px;
+  max-width: none;
+  object-fit: cover;
+  object-position: center 25%;
+  border: none;
+  border-radius: 0;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+  background: var(--lg-slate-dark);
+  margin: 0;
+}
+.legendary-challenge:not(.legendary-edit) .header-fields.npc {
+  padding: 0.4rem 1rem 0.2rem;
+  text-align: center;
+}
+.legendary-challenge:not(.legendary-edit) .header-fields.npc .title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+}
+.legendary-challenge:not(.legendary-edit) .npc-name {
+  font-family: var(--lg-title);
+  font-size: 2.2rem;
+  font-weight: normal;
+  line-height: 1.05;
+  color: var(--lg-ink);
+  border: none;
+  margin: 0;
+  text-align: center;
+}
+.legendary-challenge:not(.legendary-edit) .difficulty-icons img { height: 18px; width: auto; border: none; filter: sepia(0.3); }
+.legendary-challenge:not(.legendary-edit) .npc-roles {
+  font-family: var(--lg-sc);
+  font-size: 0.8rem;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--lg-ink-soft);
+}
+.legendary-challenge:not(.legendary-edit) .npc-short-description {
+  margin-top: 0.3rem;
+  font-family: var(--lg-text);
+  font-size: 0.88rem;
+  line-height: 1.3;
+  color: var(--lg-ink);
+  text-align: center;
+}
+
+/* single column: limits, tags & statuses, mighty, features, secrets, threats */
+.legendary-challenge:not(.legendary-edit) .npc-sheet-divider {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.2rem 0.9rem 0.9rem;
+}
+.legendary-challenge:not(.legendary-edit) .npc-beautified-container-stats,
+.legendary-challenge:not(.legendary-edit) .npc-beautified-container-stats > .left-half,
+.legendary-challenge:not(.legendary-edit) .npc-beautified-container-stats > .right-half { display: contents; }
+.legendary-challenge:not(.legendary-edit) .npc-limits-container { order: 1; }
+.legendary-challenge:not(.legendary-edit) .npc-floating-tags-and-status-container { order: 2; }
+.legendary-challenge:not(.legendary-edit) .npc-mighty-aspects-container { order: 3; }
+.legendary-challenge:not(.legendary-edit) .npc-special-features-container { order: 4; }
+.legendary-challenge:not(.legendary-edit) .npc-secret-container { order: 5; }
+.legendary-challenge:not(.legendary-edit) .npc-threats-and-consequences-container { order: 6; }
+.legendary-challenge:not(.legendary-edit) .npc-challenges-container { order: 7; }
+
+/* section titles with rules either side */
+.legendary-challenge:not(.legendary-edit) .npc-subtitle-container-c {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.3rem 0 0.35rem;
+  background: none;
+  border: none;
+}
+.legendary-challenge:not(.legendary-edit) .npc-subtitle-container-c::before,
+.legendary-challenge:not(.legendary-edit) .npc-subtitle-container-c::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--lg-ink-soft), transparent);
+}
+.legendary-challenge:not(.legendary-edit) .npc-subtitle-text {
+  font-size: 0.82rem;
+  background: none;
+  white-space: nowrap;
+}
+
+/* limits as shields */
+.legendary-challenge:not(.legendary-edit) .npc-limits-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 0.9rem;
+}
+.legendary-challenge:not(.legendary-edit) .npc-limit-item {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 2px;
+  background: none;
+  border: none;
+}
+.legendary-challenge:not(.legendary-edit) .npc-limit-item .limit-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 34px;
+  padding-bottom: 3px;
+  background: url("/systems/mist-engine-fvtt/assets/icons/icon-litm-limit-shield.svg") center / contain no-repeat;
+  font-family: var(--lg-title);
+  font-size: 1.2rem;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+.legendary-challenge:not(.legendary-edit) .npc-limit-item mark.limit {
+  padding: 0.05rem 0.45rem;
+  background: var(--lg-limit);
+  color: #fff;
+  font-family: var(--lg-sc);
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: 1px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+.legendary-challenge:not(.legendary-edit) .npc-limit-item.limit-reached { opacity: 0.6; }
+.legendary-challenge:not(.legendary-edit) .npc-limit-consequence {
+  flex-basis: 100%;
+  font-family: var(--lg-text);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+/* tags & statuses */
+.legendary-challenge:not(.legendary-edit) .npc-floating-tags-and-status-container {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+}
+.legendary-challenge:not(.legendary-edit) .floating-tags-and-status-entries {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+/* threats & consequences */
+.legendary-challenge:not(.legendary-edit) .npc-threats-and-consequences-container .entry {
+  padding: 0.15rem 0;
+  font-family: var(--lg-text);
+  font-size: 0.9rem;
+  color: var(--lg-ink);
+}
+.legendary-challenge:not(.legendary-edit) .entry-header::before {
+  content: "›";
+  margin-right: 0.3rem;
+  font-weight: bold;
+  color: var(--lg-ink-soft);
+}
+.legendary-challenge:not(.legendary-edit) .entry-header .entry-name {
+  font-family: var(--lg-sc);
+  font-size: 0.85rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  background: none;
+  color: var(--lg-ink);
+  padding: 0 0.25rem 0 0;
+  border: none;
+}
+.legendary-challenge:not(.legendary-edit) .entry-header strong { font-weight: 600; font-style: italic; }
+.legendary-challenge:not(.legendary-edit) .entry-list { margin: 0.15rem 0 0 0.6rem; padding: 0; list-style: none; }
+.legendary-challenge:not(.legendary-edit) .entry-list .entry-item { position: relative; padding-left: 1rem; margin: 0.1rem 0; }
+.legendary-challenge:not(.legendary-edit) .entry-list .entry-item::before {
+  content: "»";
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  color: var(--lg-limit);
+}
+.legendary-challenge:not(.legendary-edit) .hr-gray-line { opacity: 0.35; }
+
+/* mighty aspects, special features, secrets */
+.legendary-challenge:not(.legendary-edit) .npc-mighty-aspect-item,
+.legendary-challenge:not(.legendary-edit) .npc-special-feature-item,
+.legendary-challenge:not(.legendary-edit) .npc-secret-item {
+  font-family: var(--lg-text);
+  font-size: 0.88rem;
+  text-align: center;
+  color: var(--lg-ink);
+}
+.legendary-challenge:not(.legendary-edit) .npc-special-feature-name,
+.legendary-challenge:not(.legendary-edit) .npc-secret-name {
+  font-family: var(--lg-sc);
+  text-transform: uppercase;
+  font-size: 0.82rem;
+}
+
+/* biography tab */
+.legendary-challenge:not(.legendary-edit) .tab-biography { background: none; border: none; box-shadow: none; }

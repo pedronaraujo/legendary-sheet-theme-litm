@@ -1,0 +1,50 @@
+{
+  "id": "legendary-sheet-theme-litm",
+  "title": "Legendary Sheet Theme (Legend in the Mist)",
+  "version": "0.1.0",
+  "description": "Restyles the hero and challenge sheets of the official Legend in the Mist system as parchment theme cards, in the spirit of the original Legend in the Mist demo sheets. Uses the art installed with the system; fan-made, not affiliated with Son of Oak.",
+  "authors": [
+    {
+      "name": "Pedro Tostes"
+    }
+  ],
+  "url": "https://github.com/pedronaraujo/legendary-sheet-theme-litm",
+  "manifest": "https://raw.githubusercontent.com/pedronaraujo/legendary-sheet-theme-litm/main/module.json",
+  "download": "https://raw.githubusercontent.com/pedronaraujo/legendary-sheet-theme-litm/main/dist/legendary-sheet-theme-litm.zip",
+  "bugs": "https://github.com/pedronaraujo/legendary-sheet-theme-litm/issues",
+  "license": "LICENSE",
+  "readme": "README.md",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "mist-engine-fvtt",
+        "type": "system",
+        "compatibility": {
+          "verified": "14.5.5"
+        }
+      }
+    ]
+  },
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "styles": [
+    "styles/legendary.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "pt-BR",
+      "name": "Português (Brasil)",
+      "path": "lang/pt-BR.json"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "LEGENDARY": {
+    "rollDice": "Rolar Dados",
+    "type": {
+      "Origin": "Tema de Origem",
+      "Adventure": "Tema de Aventura",
+      "Greatness": "Tema de Grandeza",
+      "Variable": "Tema Variável",
+      "ItemTags": "Tags de item",
+      "Fellowship": "Tema de Sociedade"
+    },
+    "legend": {
+      "power": "Tags de poder",
+      "weakness": "Tag de fraqueza"
+    },
+    "settings": {
+      "characters": {
+        "name": "Fichas de herói lendárias",
+        "hint": "Mostra as fichas de herói como cartas de tema em pergaminho."
+      },
+      "challenges": {
+        "name": "Fichas de desafio lendárias",
+        "hint": "Mostra as fichas de desafio como uma carta estreita com o retrato no topo."
+      },
+      "tilt": {
+        "name": "Cartas levemente inclinadas",
+        "hint": "Inclina um pouco as cartas, como se estivessem sobre a mesa."
+      },
+      "backdrop": {
+        "name": "Fundo da ficha de herói",
+        "hint": "Atrás das cartas: a arte do herói (fundo personalizado), pergaminho ou nada (a cena aparece por trás).",
+        "art": "Arte do herói",
+        "parchment": "Pergaminho",
+        "none": "Transparente"
+      }
+    }
+  }
+}
