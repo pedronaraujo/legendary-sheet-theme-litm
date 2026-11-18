@@ -118,11 +118,15 @@ function decorateCharacter(app, root) {
 }
 
 function decorateChallenge(app, root) {
-  root.classList.toggle("legendary-edit", !!app.document.system.editMode);
-  // A narrow, card-shaped window the first time it opens
-  if (!app._legendarySized) {
-    app._legendarySized = true;
-    if (!app.document.system.editMode) app.setPosition({ width: 430, height: Math.min(860, window.innerHeight - 40) });
+  const editMode = !!app.document.system.editMode;
+  root.classList.toggle("legendary-edit", editMode);
+  // A narrow card in view mode, the system's wide layout to edit
+  const mode = editMode ? "edit" : "view";
+  if (app._legendaryMode !== mode) {
+    const first = app._legendaryMode === undefined;
+    app._legendaryMode = mode;
+    if (mode === "view") app.setPosition({ width: 430, height: Math.min(860, window.innerHeight - 40) });
+    else if (!first) app.setPosition({ width: 900, height: 800 });
   }
 }
 
