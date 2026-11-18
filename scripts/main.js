@@ -107,6 +107,22 @@ function decorateCharacter(app, root) {
     }
   }
 
+  // Transparent backdrop: the hero's portrait stands at the left, as on the table
+  const content = root.querySelector(".window-content");
+  const backdrop = game.settings.get(MODULE_ID, SETTINGS.BACKDROP);
+  let portrait = content?.querySelector(":scope > .legendary-portrait");
+  const img = app.document.img;
+  const usable = img && !img.includes("mystery-man") && !img.startsWith("icons/svg");
+  if (backdrop === "none" && usable && !editMode) {
+    if (!portrait) {
+      portrait = document.createElement("img");
+      portrait.className = "legendary-portrait";
+      portrait.alt = "";
+      content.prepend(portrait);
+    }
+    portrait.src = img;
+  } else portrait?.remove();
+
   // Header: the roll buttons become a "Roll Dice" scroll
   const rolls = root.querySelector(".sheet-header .col-main");
   if (rolls && !rolls.querySelector(".legendary-roll-title")) {

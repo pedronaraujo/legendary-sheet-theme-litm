@@ -769,3 +769,23 @@
 .legendary-challenge:not(.legendary-edit) .entry-list .entry-item { padding-left: 1.1rem; }
 .legendary-challenge:not(.legendary-edit) .entry-list .entry-item::before { content: none; }
 .legendary-challenge:not(.legendary-edit) .sheet-tabs { margin: 0.2rem 1rem; }
+
+/* transparent backdrop: the hero portrait at the left */
+.legendary-character .window-content { position: relative; }
+.legendary-character .window-content > .legendary-portrait {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 92%;
+  width: auto;
+  max-width: 34%;
+  object-fit: contain;
+  object-position: left bottom;
+  pointer-events: none;
+  z-index: 0;
+  border: none;
+  -webkit-mask-image: linear-gradient(to right, #000 75%, transparent);
+  mask-image: linear-gradient(to right, #000 75%, transparent);
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+}
+.legendary-character .window-content > :not(.legendary-portrait) { position: relative; z-index: 1; }
