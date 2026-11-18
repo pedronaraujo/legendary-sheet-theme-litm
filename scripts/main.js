@@ -84,6 +84,20 @@ function decorateCharacter(app, root) {
       legend.innerHTML = `<span>${loc("legend.power")}</span><span class="sep">·</span><span class="weak">${loc("legend.weakness")}</span>`;
       tags.prepend(legend);
     }
+    // development tracks: put the label (a bare text node) in its own element
+    for (const dev of card.querySelectorAll(".development-partial-container")) {
+      for (const node of [...dev.childNodes]) {
+        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+          const span = document.createElement("span");
+          span.className = "legendary-dev-label";
+          span.textContent = node.textContent.trim();
+          node.replaceWith(span);
+        }
+      }
+    }
+    // long titles get a smaller size
+    const title = card.querySelector(".powertag-name.first");
+    if (title) title.classList.toggle("legendary-long", title.textContent.trim().length > 14);
     // the quest: quote marks like a book epigraph
     const quest = card.querySelector(".quest-text");
     if (quest && !quest.dataset.legendary) {

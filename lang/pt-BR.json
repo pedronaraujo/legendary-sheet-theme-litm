@@ -2,10 +2,10 @@
   "LEGENDARY": {
     "rollDice": "Rolar Dados",
     "type": {
-      "Origin": "Tema de Origem",
-      "Adventure": "Tema de Aventura",
-      "Greatness": "Tema de Grandeza",
-      "Variable": "Tema Variável",
+      "Origin": "Origem",
+      "Adventure": "Aventura",
+      "Greatness": "Grandeza",
+      "Variable": "Variável",
       "ItemTags": "Tags de item",
       "Fellowship": "Tema de Sociedade"
     },

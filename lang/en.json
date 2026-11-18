@@ -2,10 +2,10 @@
   "LEGENDARY": {
     "rollDice": "Roll Dice",
     "type": {
-      "Origin": "Origin theme",
-      "Adventure": "Adventure theme",
-      "Greatness": "Greatness theme",
-      "Variable": "Variable theme",
+      "Origin": "Origin",
+      "Adventure": "Adventure",
+      "Greatness": "Greatness",
+      "Variable": "Variable",
       "ItemTags": "Item tags",
       "Fellowship": "Fellowship theme"
     },
