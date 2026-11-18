@@ -756,3 +756,16 @@
   outline: 2px solid var(--lg-gold);
   outline-offset: 1px;
 }
+.legendary-theme:not(.legendary-edit) .floating-tags-and-status-entries {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
+.legendary-theme:not(.legendary-edit) .floating-tags-and-status-entries .fts-input-name { flex: 0 0 auto; }
+/* threats: the consequence lines keep the system's icon, no extra marker */
+.legendary-challenge:not(.legendary-edit) .entry-list .entry-item { padding-left: 0; }
+.legendary-challenge:not(.legendary-edit) .entry-list .entry-item::before { content: none; }
+.legendary-challenge:not(.legendary-edit) .sheet-tabs { margin: 0.2rem 1rem; }
