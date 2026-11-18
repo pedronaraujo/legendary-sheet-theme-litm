@@ -729,3 +729,30 @@
 
 /* biography tab */
 .legendary-challenge:not(.legendary-edit) .tab-biography { background: none; border: none; box-shadow: none; }
+
+/* the whole card scrolls (portrait included), not only the lower part */
+.application.legendary-challenge:not(.legendary-edit) .window-content {
+  overflow-y: auto;
+  display: block;
+}
+.legendary-challenge:not(.legendary-edit) section.tab.scrollable {
+  overflow: visible;
+  height: auto;
+  max-height: none;
+}
+/* compact tag & status labels */
+.legendary-theme:not(.legendary-edit) .floating-tags-and-status-entries .floating-tag-and-status-entry {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 0;
+  margin: 0;
+}
+.legendary-theme:not(.legendary-edit) .floating-tags-and-status-entries .fts-tag-container { width: auto; }
+.legendary-theme:not(.legendary-edit) .floating-tag-and-status-entry .fts-selectable { white-space: nowrap; cursor: pointer; }
+.legendary-theme:not(.legendary-edit) .floating-tag-and-status-entry .fts-input-name .fts-tag-status-toggle { display: none; }
+.legendary-theme:not(.legendary-edit) .floating-tag-and-status-entry:hover .fts-input-name .fts-tag-status-toggle { display: inline-block; }
+.legendary-theme:not(.legendary-edit) .floating-tag-and-status-entry .selected,
+.legendary-theme:not(.legendary-edit) .floating-tag-and-status-entry .fts-input-name:has(.fts-selectable.selected) {
+  outline: 2px solid var(--lg-gold);
+  outline-offset: 1px;
+}
